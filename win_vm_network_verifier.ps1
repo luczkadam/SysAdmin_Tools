@@ -12,18 +12,7 @@
 # Note: The state file is saved on the current user's Desktop.
 # ==============================================================================
 
-<#
-.SYNOPSIS
-    Windows VM Network Migration Verifier
-.DESCRIPTION
-    Saves and verifies the network configuration (IP, Netmask, 
-    Routing, and MAC addresses) of a Windows Virtual Machine 
-    before and after hypervisor migration.
-    The state file is saved on the current user's Desktop.
-#>
-
 param (
-    # Position=0 pozwala na podanie wartości bez wpisywania "-Mode"
     [Parameter(Position=0)]
     [string]$Mode
 )
@@ -95,7 +84,6 @@ elseif ($Mode -ieq "Verify") {
     }
 }
 else {
-    # Co się stanie, gdy użytkownik nie poda parametru lub poda błędny:
     Write-Host "Usage: .\win_vm_network_verifier.ps1 {Save|Verify}" -ForegroundColor Yellow
     Write-Host "Example to save:   powershell.exe -ExecutionPolicy Bypass -File .\win_vm_network_verifier.ps1 Save" -ForegroundColor Gray
     Write-Host "Example to verify: powershell.exe -ExecutionPolicy Bypass -File .\win_vm_network_verifier.ps1 Verify" -ForegroundColor Gray
